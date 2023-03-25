@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+    <style>
+      body {
+	  background-color: black;
+	  color: white;
+      }
+
+      /* Use OpenAI dark theme colors */
+      :root {
+        --primary-background: #1d1d1f;
+        --secondary-background: #252529;
+        --text-primary: #f3f3f3;
+        --text-secondary: #b1b1b3;
+        --text-tertiary: #8c8c8e;
+      }
+
+      /* Set the background color of the HTML element to gray */
+  
+      /* Style the chat input and output boxes */
+      #chat-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #chat-input,
+      #chat-output {
+        width: 100%;
+        padding: 16px;
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 16px;
+        font-size: 16px;
+        color: var(--text-primary);
+        background-color: var(--secondary-background);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      #chat-input:focus,
+      #chat-output:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--text-primary);
+      }
+ .bot-message {
+    opacity: 0;
+    animation-name: terminal;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  .bot-message.typing {
+    display: inline-block;
+    vertical-align: middle;
+    animation-name: typing;
+    animation-duration: 0.8s;
+    animation-fill-mode: both;
+    animation-timing-function: steps(14);
+  }
+
+  @keyframes terminal {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes typing {
+      0% { opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { opacity: 1; }
+  }
+    </style>
+  </head>
+  <body>
+    <div id="chat-container">
+      <h1>Alhussain Openai Chatbot</h1>
+      <input type="text" id="chat-input" placeholder="Enter your message...">
+      <div id="chat-output"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+ // Send user input to server and display response in chat output
+  $('#chat-input').keydown(function(event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      var userInput = $('#chat-input').val();
+      $('#chat-output').append('<p class="user-message">' + userInput + '</p>');
+      $('#chat-input').val('');
+      $.post('/chat', {'user_input': userInput}, function(data) {
+        var response = data.response.trim();
+        var i = 0;
+        var botMessage = $('<p class="bot-message"></p>');
+        $('#chat-output').append(botMessage);
+	  var intervalId = setInterval(function() {
+	      botMessage.append(response.charAt(i));
+	      i++;
+	      if (i > response.length) {
+		  clearInterval(intervalId);
+	      }
+	  }, 50);
+        $('#chat-output').scrollTop($('#chat-output')[0].scrollHeight);
+      });
+    }
+  });
+    </script>
+  </body>
+</html>
