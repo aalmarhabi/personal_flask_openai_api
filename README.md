@@ -1,20 +1,24 @@
 # Personal Openai chatbot
-This repo use Python and Flask framework to utilize chatGPT from openai API. the flask_interaction_run.py is responsble to interact we openai API and request the response for user input. 
+This repo use Python and Flask framework to utilize chatGPT from openai API. the flask_interaction_run.py is responsble to interact with Openai API and request the response for user input. You will also need to USE API_KEY to run the code correctly.
 
-## requierments
+## Python Version:
+python 3.10
+
+## Requierments
 In terminal run:
 ```shell
 pip install -r requirements.txt
 ```
 
-## Run Flask locally
+## Run Flask Locally
 In terminal run:
 ```
 python flask_interaction_run.py
 ```
 Then copy the url appear in the terminal to your browser. 
 
-## output example 
-![image one](../peronal_flask_openai_api/imgs/general output.png gif_animation.gif../peronal_flask_openai_api/imgs/general_output.png)
-![image two](../peronal_flask_openai_api/imgs/general output.png gif_animation.gif../peronal_flask_openai_api/imgs/gif_animation.gif)
+## Output Example 
+![image one](https://github.com/aalmarhabi/personal_flask_openai_api/blob/main/imgs/general_output.png)
+
+![image two](https://github.com/aalmarhabi/personal_flask_openai_api/blob/main/imgs/gif_animation.gif)
 
