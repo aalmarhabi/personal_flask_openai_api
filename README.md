@@ -1,6 +1,8 @@
 # Personal Openai chatbot
 This repo use Python and Flask framework to utilize chatGPT from openai API. the flask_interaction_run.py is responsble to interact with Openai API and request the response for user input. You will also need to USE API_KEY to run the code correctly.
 
+You can modify the index.html to modify the page look and animation.
+
 ## Python Version:
 python 3.10
 
