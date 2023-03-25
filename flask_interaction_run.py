@@ -5,7 +5,7 @@ openai.api_key = "YOUR_API_KEY_HERE" # (DO NOT SHARE!) Use your API key form htt
 app = Flask(__name__)
 
 # Define the OpenAI GPT-3 model to use for generating responses
-model_engine = "text-davinci-002"
+model_engine = "text-davinci-003" #"text-davinci-002"
 
 # Define the index page for the web application
 @app.route('/')
